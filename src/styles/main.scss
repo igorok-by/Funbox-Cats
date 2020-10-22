@@ -1,5 +1,7 @@
+@import "./reset";
 @import "./fonts";
 @import "./variables";
+@import "./mixins";
 
 html {
   height: 100%;
@@ -32,6 +34,11 @@ html {
 body {
   position: relative;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   margin: 0;
   padding: 0;
 

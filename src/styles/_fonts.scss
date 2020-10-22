@@ -3,6 +3,7 @@
   font-weight: 700;
   font-family: "Trebuchet MS";
 
+  font-display: fallback;
   src: url("../assets/fonts/Trebuchet/TrebuchetMS-Bold.eot");
   src: local("☺"),
   url("../assets/fonts/Trebuchet/TrebuchetMS-Bold.woff") format("woff"),
@@ -15,6 +16,7 @@
   font-weight: 400;
   font-family: "Trebuchet MS";
 
+  font-display: fallback;
   src: url("../assets/fonts/Trebuchet/TrebuchetMS.eot");
   src: local("☺"),
   url("../assets/fonts/Trebuchet/TrebuchetMS.woff") format("woff"),
@@ -27,6 +29,7 @@
   font-weight: normal;
   font-family: "Exo2";
 
+  font-display: fallback;
   src: url("../assets/fonts/Exo2/Exo2.0-Thin.eot");
   src: local("☺"),
   url("../assets/fonts/Exo2/Exo2.0-Thin.woff") format("woff"),

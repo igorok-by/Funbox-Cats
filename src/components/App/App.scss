@@ -1,0 +1,17 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.app__title {
+  font-size: rem(36);
+  font-family: $secondFont;
+  text-align: center;
+  color: $default-color;
+  text-shadow: 0 1px 0 $dark-color;
+}
+
+.app__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
