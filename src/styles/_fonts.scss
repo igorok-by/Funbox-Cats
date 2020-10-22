@@ -1,0 +1,35 @@
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  font-family: "Trebuchet MS";
+
+  src: url("../assets/fonts/Trebuchet/TrebuchetMS-Bold.eot");
+  src: local("☺"),
+  url("../assets/fonts/Trebuchet/TrebuchetMS-Bold.woff") format("woff"),
+  url("../assets/fonts/Trebuchet/TrebuchetMS-Bold.ttf") format("truetype"),
+  url("../assets/fonts/Trebuchet/TrebuchetMS-Bold.svg") format("svg");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  font-family: "Trebuchet MS";
+
+  src: url("../assets/fonts/Trebuchet/TrebuchetMS.eot");
+  src: local("☺"),
+  url("../assets/fonts/Trebuchet/TrebuchetMS.woff") format("woff"),
+  url("../assets/fonts/Trebuchet/TrebuchetMS.ttf") format("truetype"),
+  url("../assets/fonts/Trebuchet/TrebuchetMS.svg") format("svg");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: "Exo2";
+
+  src: url("../assets/fonts/Exo2/Exo2.0-Thin.eot");
+  src: local("☺"),
+  url("../assets/fonts/Exo2/Exo2.0-Thin.woff") format("woff"),
+  url("../assets/fonts/Exo2/Exo2.0-Thin.ttf") format("truetype"),
+  url("../assets/fonts/Exo2/Exo2.0-Thin.svg") format("svg");
+}
