@@ -90,8 +90,6 @@
 
   background-color: $bg-light;
 
-  transition: $def-transition;
-
   clip-path: url("#clip-path");
 }
 
@@ -143,6 +141,8 @@
 
   background-color: $primary-color;
   border-radius: 50%;
+
+  transition: $long-transition;
 
   span {
     font-size: rem(42);
