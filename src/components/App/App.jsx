@@ -15,33 +15,7 @@ const App = () => {
   const updateCardState = (cardId) => {
     setCardsData((prevCardsData) =>
       prevCardsData.map((card) => {
-        if (card.id === cardId && card.cardState !== DISABLED) {
-          const newCardState = card.cardState === DEFAULT ? SELECTED : DEFAULT
-
-          return { ...card, cardState: newCardState }
-        }
-        return card
-      }),
-    )
-  }
-
-  const handleCardClick = (cardId) => {
-    setCardsData((prevCardsData) =>
-      prevCardsData.map((card) => {
-        if (card.id === cardId && card.cardState !== DISABLED) {
-          const newIsClicked = !card.isClicked
-
-          return { ...card, isClicked: newIsClicked }
-        }
-        return card
-      }),
-    )
-  }
-
-  const handleCardMouseOut = (cardId) => {
-    setCardsData((prevCardsData) =>
-      prevCardsData.map((card) => {
-        if (card.id === cardId && card.isClicked) {
+        if (card.id === cardId) {
           const newCardState = card.cardState === DEFAULT ? SELECTED : DEFAULT
 
           return { ...card, cardState: newCardState, isClicked: false }
@@ -51,8 +25,26 @@ const App = () => {
     )
   }
 
-  const mappedCards = cardsData.map((card) => {
-    return card.cardState !== DISABLED ? (
+  const handleCardClick = (cardId) => {
+    setCardsData((prevCardsData) =>
+      prevCardsData.map((card) =>
+        card.id === cardId && card.cardState !== DISABLED
+          ? { ...card, isClicked: !card.isClicked }
+          : card,
+      ),
+    )
+  }
+
+  const handleCardMouseOut = (cardId) => {
+    const updatedCard = cardsData.find((card) => card.id === cardId)
+
+    if (updatedCard.isClicked) updateCardState(cardId)
+  }
+
+  const mappedCards = cardsData.map((card) =>
+    card.cardState === DISABLED ? (
+      <Card data={card} key={card.id} />
+    ) : (
       <Card
         data={card}
         key={card.id}
@@ -60,15 +52,8 @@ const App = () => {
         handleCardClick={() => handleCardClick(card.id)}
         handleCardMouseOut={() => handleCardMouseOut(card.id)}
       />
-    ) : (
-      <Card
-        data={card}
-        key={card.id}
-        handleCaptionClick={() => updateCardState(card.id)}
-        handleCardClick={() => handleCardClick(card.id)}
-      />
-    )
-  })
+    ),
+  )
 
   return (
     <div className="app">

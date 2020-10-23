@@ -69,17 +69,11 @@ const Card = ({
         </div>
       </div>
 
-      <p
-        className={classNames('card-caption', {
-          'card-caption--warning': cardState === DISABLED,
-        })}
-      >
-        <Caption
-          cardState={cardState}
-          handleCaptionClick={handleCaptionClick}
-          subtitle={subtitle}
-        />
-      </p>
+      <Caption
+        cardState={cardState}
+        handleCaptionClick={handleCaptionClick}
+        subtitle={subtitle}
+      />
     </div>
   )
 }

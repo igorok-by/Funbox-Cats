@@ -19,7 +19,7 @@ const cards = [
     quantityMouses: 2,
     extraOption: '',
     weight: 2,
-    cardState: 'default',
+    cardState: 'selected',
   },
   {
     id: 3,

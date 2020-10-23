@@ -1,7 +1,13 @@
 import React, { memo } from 'react'
-import { DEFAULT, SELECTED, DISABLED } from '../../utils/constants'
+import classNames from 'classnames'
+
+import { SELECTED, DISABLED } from '../../utils/constants'
 
 const Caption = ({ cardState, handleCaptionClick, subtitle }) => {
+  const classCaption = classNames('card-caption', {
+    'card-caption--warning': cardState === DISABLED,
+  })
+
   const DefCaption = () => (
     <>
       Чего сидишь? Порадуй котэ, <span onClick={handleCaptionClick}>купи</span>.
@@ -13,17 +19,18 @@ const Caption = ({ cardState, handleCaptionClick, subtitle }) => {
   const disabledCaption = `Печалька, ${subtitle} закончился.`
 
   switch (cardState) {
-    case DEFAULT:
-      return <DefCaption />
-
     case SELECTED:
-      return selectedCaption
+      return <p className={classCaption}>{selectedCaption}</p>
 
     case DISABLED:
-      return disabledCaption
+      return <p className={classCaption}>{disabledCaption}</p>
 
     default:
-      return <DefCaption />
+      return (
+        <p className={classCaption}>
+          <DefCaption />
+        </p>
+      )
   }
 }
 
