@@ -1,7 +1,6 @@
 @import "./reset";
 @import "./fonts";
 @import "./variables";
-@import "./mixins";
 
 html {
   height: 100%;
@@ -11,24 +10,15 @@ html {
   line-height: $mainLineHeight;
   color: $mainFontColor;
 
-  // @include media-breakpoint-down(xl) {
-  //   font-size: 15px;
-  // }
+  @media screen and (max-width: $screen-desktop) {
+    // 1200
+    font-size: 15px;
+  }
 
-  // @include media-breakpoint-down(lg) {
-  //   // 992px
-  //   font-size: 14px;
-  // }
-
-  // @include media-breakpoint-down(md) {
-  //   // 768px
-  //   font-size: 13px;
-  // }
-
-  // @include media-breakpoint-down(sm) {
-  //   // 576px
-  //   font-size: 12px;
-  // }
+  @media screen and (max-width: $screen-sm-tablet) {
+    // 768px
+    font-size: 14px;
+  }
 }
 
 body {
@@ -38,7 +28,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
 

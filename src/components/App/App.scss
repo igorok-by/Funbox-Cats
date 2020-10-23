@@ -1,6 +1,10 @@
 @import "../../styles/variables";
 @import "../../styles/mixins";
 
+.app {
+  margin: rem(30) 0;
+}
+
 .app__title {
   font-size: rem(36);
   font-family: $secondFont;

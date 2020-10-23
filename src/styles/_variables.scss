@@ -24,3 +24,9 @@ $low-opacity: 0.5;
 // Transition
 $def-transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 $long-transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+// Breakpoints
+$screen-phone: 480px;
+$screen-sm-tablet: 768px;
+$screen-tablet: 992px;
+$screen-desktop: 1200px;

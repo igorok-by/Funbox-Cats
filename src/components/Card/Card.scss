@@ -173,3 +173,45 @@
 
   stroke: $primary-color;
 }
+
+@media screen and (max-width: $screen-desktop) {
+  .card-wrapper {
+    margin-right: rem(30);
+    margin-left: rem(30);
+  }
+}
+
+@media screen and (max-width: $screen-tablet) {
+  .card-wrapper {
+    margin-right: rem(25);
+    margin-left: rem(25);
+  }
+}
+
+@media screen and (max-width: $screen-sm-tablet) {
+  .card-wrapper {
+    margin-right: rem(20);
+    margin-left: rem(20);
+  }
+}
+
+@media screen and (max-width: $screen-phone) {
+  .card-wrapper {
+    margin-right: rem(15);
+    margin-left: rem(15);
+  }
+
+  .card {
+    width: 80vw;
+    height: 120vw;
+  }
+
+  .card__container {
+    padding-right: 35px;
+    padding-left: 35px;
+  }
+
+  .card-caption {
+    font-size: 14px;
+  }
+}
