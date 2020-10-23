@@ -43,10 +43,15 @@
   transition: $def-transition;
 
   &:hover {
-    filter: drop-shadow(0 0 6px $default-color);
+    filter: drop-shadow(0 0 8px $primary-color)
+    drop-shadow(0 0 8px $primary-color);
   }
 
   &--selected {
+    &:hover {
+      filter: drop-shadow(0 0 8px $danger-color) drop-shadow(0 0 8px $danger-color);
+    }
+
     .card__border {
       stroke: $danger-color;
     }

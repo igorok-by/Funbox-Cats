@@ -23,7 +23,9 @@ const Card = ({
     weight,
     cardState,
   },
-  handleClick,
+  handleCardClick,
+  handleCardMouseOut,
+  handleCaptionClick,
 }) => {
   const cardClass = classNames(
     'card',
@@ -37,7 +39,11 @@ const Card = ({
 
   return (
     <div className="card-wrapper">
-      <div className={cardClass} onClick={handleClick}>
+      <div
+        className={cardClass}
+        onClick={handleCardClick}
+        onMouseOut={handleCardMouseOut}
+      >
         <div className="card__container">
           <p className="card__header">{header}</p>
           <h2 className="card__title">{title}</h2>
@@ -70,7 +76,7 @@ const Card = ({
       >
         <Caption
           cardState={cardState}
-          handleClick={handleClick}
+          handleCaptionClick={handleCaptionClick}
           subtitle={subtitle}
         />
       </p>

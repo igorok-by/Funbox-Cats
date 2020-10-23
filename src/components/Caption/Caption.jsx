@@ -1,10 +1,10 @@
 import React, { memo } from 'react'
 import { DEFAULT, SELECTED, DISABLED } from '../../utils/constants'
 
-const Caption = ({ cardState, handleClick, subtitle }) => {
+const Caption = ({ cardState, handleCaptionClick, subtitle }) => {
   const DefCaption = () => (
     <>
-      Чего сидишь? Порадуй котэ, <span onClick={handleClick}>купи</span>.
+      Чего сидишь? Порадуй котэ, <span onClick={handleCaptionClick}>купи</span>.
     </>
   )
 

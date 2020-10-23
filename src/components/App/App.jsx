@@ -9,13 +9,13 @@ const App = () => {
   const [cardsData, setCardsData] = useState([])
 
   useEffect(() => {
-    setCardsData(cards)
+    setCardsData(cards.map((card) => ({ ...card, isClicked: false })))
   }, [])
 
-  const handleClick = (id) => {
+  const updateCardState = (cardId) => {
     setCardsData((prevCardsData) =>
       prevCardsData.map((card) => {
-        if (card.id === id && card.cardState !== DISABLED) {
+        if (card.id === cardId && card.cardState !== DISABLED) {
           const newCardState = card.cardState === DEFAULT ? SELECTED : DEFAULT
 
           return { ...card, cardState: newCardState }
@@ -25,9 +25,50 @@ const App = () => {
     )
   }
 
-  const mappedCards = cardsData.map((card) => (
-    <Card data={card} handleClick={() => handleClick(card.id)} key={card.id} />
-  ))
+  const handleCardClick = (cardId) => {
+    setCardsData((prevCardsData) =>
+      prevCardsData.map((card) => {
+        if (card.id === cardId && card.cardState !== DISABLED) {
+          const newIsClicked = !card.isClicked
+
+          return { ...card, isClicked: newIsClicked }
+        }
+        return card
+      }),
+    )
+  }
+
+  const handleCardMouseOut = (cardId) => {
+    setCardsData((prevCardsData) =>
+      prevCardsData.map((card) => {
+        if (card.id === cardId && card.isClicked) {
+          const newCardState = card.cardState === DEFAULT ? SELECTED : DEFAULT
+
+          return { ...card, cardState: newCardState, isClicked: false }
+        }
+        return card
+      }),
+    )
+  }
+
+  const mappedCards = cardsData.map((card) => {
+    return card.cardState !== DISABLED ? (
+      <Card
+        data={card}
+        key={card.id}
+        handleCaptionClick={() => updateCardState(card.id)}
+        handleCardClick={() => handleCardClick(card.id)}
+        handleCardMouseOut={() => handleCardMouseOut(card.id)}
+      />
+    ) : (
+      <Card
+        data={card}
+        key={card.id}
+        handleCaptionClick={() => updateCardState(card.id)}
+        handleCardClick={() => handleCardClick(card.id)}
+      />
+    )
+  })
 
   return (
     <div className="app">
