@@ -14,13 +14,13 @@ import {
 
 const Card = ({
   data: {
-    header,
     title,
     subtitle,
     quantityPortions,
     quantityMouses,
     extraOption,
     weight,
+    captionSelected,
     cardState,
   },
   handleCardClick,
@@ -44,33 +44,33 @@ const Card = ({
         onClick={handleCardClick}
         onMouseOut={handleCardMouseOut}
       >
-        <div className="card__container">
-          <p className="card__header">{header}</p>
-          <h2 className="card__title">{title}</h2>
-          <h4 className="card__subtitle">{subtitle}</h4>
+        <p className="card__header-default">Сказочное заморское яство</p>
+        <p className="card__header-hover-selected">Котэ не одобряет?</p>
+        <h2 className="card__title">{title}</h2>
+        <h4 className="card__subtitle">{subtitle}</h4>
 
-          <p className="card__option">
-            <span>{quantityPortions}</span>
-            {createPortionsAppendix(quantityPortions)}
-          </p>
-          <p className="card__option">
-            <span>{quantityMouses === 1 ? '' : quantityMouses}</span>
-            {createMousesAppendix(quantityMouses)}
-          </p>
-          {extraOption && <p className="card__option">{extraOption}</p>}
+        <p className="card__option">
+          <span>{quantityPortions}</span>
+          {createPortionsAppendix(quantityPortions)}
+        </p>
+        <p className="card__option">
+          <span>{quantityMouses === 1 ? '' : quantityMouses}</span>
+          {createMousesAppendix(quantityMouses)}
+        </p>
+        {extraOption && <p className="card__option">{extraOption}</p>}
 
-          <p className="card__label">
-            <span>{weight.toLocaleString('ru-RU')}</span>кг
-          </p>
+        <p className="card__label">
+          <span>{weight.toLocaleString('ru-RU')}</span>кг
+        </p>
 
-          <img src={catImg} className="card__img" alt="cat" />
-          <CardBorder />
-          <ClipPath />
-        </div>
+        <img src={catImg} className="card__img" alt="cat" />
+        <CardBorder />
+        <ClipPath />
       </div>
 
       <Caption
         cardState={cardState}
+        captionSelected={captionSelected}
         handleCaptionClick={handleCaptionClick}
         subtitle={subtitle}
       />

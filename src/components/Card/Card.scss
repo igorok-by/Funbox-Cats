@@ -35,21 +35,46 @@
 }
 
 .card {
+  position: relative;
+
   width: 320px;
   height: 480px;
+  padding: rem(24) rem(49);
 
+  background-color: $bg-light;
   cursor: pointer;
 
   transition: $def-transition;
 
-  &:hover {
-    filter: drop-shadow(0 0 8px $primary-color)
-    drop-shadow(0 0 8px $primary-color);
+  clip-path: url("#clip-path");
+
+  &:not(.card--disabled):not(.card--selected):hover {
+    .card__border {
+      stroke: $primary-hover-color;
+    }
+
+    .card__label {
+      background-color: $primary-hover-color;
+    }
   }
 
   &--selected {
     &:hover {
-      filter: drop-shadow(0 0 8px $danger-color) drop-shadow(0 0 8px $danger-color);
+      .card__header-default {
+        display: none;
+      }
+
+      .card__header-hover-selected {
+        display: block;
+      }
+
+      .card__border {
+        stroke: $danger-hover-color;
+      }
+
+      .card__label {
+        background-color: $danger-hover-color;
+      }
     }
 
     .card__border {
@@ -63,10 +88,6 @@
 
   &--disabled {
     cursor: default;
-
-    &:hover {
-      filter: none;
-    }
 
     .card__header,
     .card__option,
@@ -86,20 +107,14 @@
   }
 }
 
-.card__container {
-  position: relative;
-
-  width: 100%;
-  height: 100%;
-  padding: rem(24) rem(49);
-
-  background-color: $bg-light;
-
-  clip-path: url("#clip-path");
+.card__header-default {
+  color: $light-color;
 }
 
-.card__header {
-  color: $light-color;
+.card__header-hover-selected {
+  display: none;
+
+  color: $danger-hover-color;
 }
 
 .card__title {
@@ -147,7 +162,7 @@
   background-color: $primary-color;
   border-radius: 50%;
 
-  transition: $long-transition;
+  transition: $def-transition;
 
   span {
     font-size: rem(42);
@@ -169,7 +184,7 @@
 
   width: 100%;
 
-  transition: $long-transition;
+  transition: $def-transition;
 
   stroke: $primary-color;
 }
@@ -204,11 +219,11 @@
   .card {
     width: 80vw;
     height: 120vw;
+    padding-right: 35px;
+    padding-left: 35px;
   }
 
   .card__container {
-    padding-right: 35px;
-    padding-left: 35px;
   }
 
   .card-caption {

@@ -3,7 +3,12 @@ import classNames from 'classnames'
 
 import { SELECTED, DISABLED } from '../../utils/constants'
 
-const Caption = ({ cardState, handleCaptionClick, subtitle }) => {
+const Caption = ({
+  cardState,
+  captionSelected,
+  handleCaptionClick,
+  subtitle,
+}) => {
   const classCaption = classNames('card-caption', {
     'card-caption--warning': cardState === DISABLED,
   })
@@ -14,13 +19,11 @@ const Caption = ({ cardState, handleCaptionClick, subtitle }) => {
     </>
   )
 
-  const selectedCaption = 'Головы щучьи с чесноком да свежайшая сёмгушка'
-
   const disabledCaption = `Печалька, ${subtitle} закончился.`
 
   switch (cardState) {
     case SELECTED:
-      return <p className={classCaption}>{selectedCaption}</p>
+      return <p className={classCaption}>{captionSelected}</p>
 
     case DISABLED:
       return <p className={classCaption}>{disabledCaption}</p>
