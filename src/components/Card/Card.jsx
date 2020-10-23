@@ -2,45 +2,80 @@ import React, { memo } from 'react'
 import classNames from 'classnames'
 import './Card.scss'
 
+import Caption from '../Caption'
 import CardBorder from './CardBorder'
-import catImg from './cat.png'
 import ClipPath from './ClipPath'
+import catImg from './cat.png'
+import { SELECTED, DISABLED } from '../../utils/constants'
+import {
+  createPortionsAppendix,
+  createMousesAppendix,
+} from '../../utils/workers'
 
-const Card = ({ cardState }) => {
+const Card = ({
+  data: {
+    header,
+    title,
+    subtitle,
+    quantityPortions,
+    quantityMouses,
+    extraOption,
+    weight,
+    cardState,
+  },
+}) => {
   const cardClass = classNames(
     'card',
     {
-      'card--selected': cardState === 'selected',
+      'card--selected': cardState === SELECTED,
     },
     {
-      'card--disabled': cardState === 'disabled',
+      'card--disabled': cardState === DISABLED,
     },
   )
+
+  const handleClick = () => {
+    console.log('click')
+  }
 
   return (
     <div className="card-wrapper">
       <div className={cardClass}>
-        <p className="card__header">Сказочное заморское яство</p>
-        <h2 className="card__title">Нямушка</h2>
-        <h4 className="card__subtitle">с фуа-гра</h4>
+        <div className="card__container">
+          <p className="card__header">{header}</p>
+          <h2 className="card__title">{title}</h2>
+          <h4 className="card__subtitle">{subtitle}</h4>
 
-        <p className="card__option">
-          <span>10</span> порций
-        </p>
-        <p className="card__option">мышь в подарок</p>
-        <p className="card__option"></p>
+          <p className="card__option">
+            <span>{quantityPortions}</span>
+            {createPortionsAppendix(quantityPortions)}
+          </p>
+          <p className="card__option">
+            <span>{quantityMouses === 1 ? '' : quantityMouses}</span>
+            {createMousesAppendix(quantityMouses)}
+          </p>
+          {extraOption && <p className="card__option">{extraOption}</p>}
 
-        <p className="card__label">
-          <span>0,5</span>кг
-        </p>
+          <p className="card__label">
+            <span>{weight.toLocaleString('ru-RU')}</span>кг
+          </p>
 
-        <img src={catImg} className="card__img" alt="cat" />
-        <CardBorder />
-        <ClipPath />
+          <img src={catImg} className="card__img" alt="cat" />
+          <CardBorder />
+          <ClipPath />
+        </div>
       </div>
 
-      <p className="card__caption">
-        Чего сидишь? Порадуй котэ, <a href=" ">купи</a>
+      <p
+        className={classNames('card-caption', {
+          'card-caption--warning': cardState === DISABLED,
+        })}
+      >
+        <Caption
+          cardState={cardState}
+          handleClick={handleClick}
+          subtitle={subtitle}
+        />
       </p>
     </div>
   )

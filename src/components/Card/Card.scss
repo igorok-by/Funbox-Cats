@@ -5,19 +5,46 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 320px;
   margin: rem(23) rem(40);
 }
 
-.card {
-  position: relative;
+.card-caption {
+  padding-top: rem(15);
 
+  font-size: rem(13);
+  text-align: center;
+  color: $default-color;
+  text-shadow: 0 1px 0 $dark-color;
+
+  &--warning {
+    color: $warning-color;
+  }
+
+  span {
+    color: $primary-color;
+
+    cursor: pointer;
+
+    transition: $def-transition;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.card {
   width: 320px;
   height: 480px;
-  padding: rem(24) rem(49);
 
-  background-color: $bg-light;
+  cursor: pointer;
 
-  clip-path: url("#clip-path");
+  transition: $def-transition;
+
+  &:hover {
+    filter: drop-shadow(0 0 6px $default-color);
+  }
 
   &--selected {
     .card__border {
@@ -30,6 +57,12 @@
   }
 
   &--disabled {
+    cursor: default;
+
+    &:hover {
+      filter: none;
+    }
+
     .card__header,
     .card__option,
     .card__title,
@@ -46,6 +79,20 @@
       background-color: $lighter-color;
     }
   }
+}
+
+.card__container {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+  padding: rem(24) rem(49);
+
+  background-color: $bg-light;
+
+  transition: $def-transition;
+
+  clip-path: url("#clip-path");
 }
 
 .card__header {
@@ -100,15 +147,6 @@
   span {
     font-size: rem(42);
   }
-}
-
-.card__caption {
-  padding-top: rem(15);
-
-  font-size: rem(13);
-  text-align: center;
-  color: $default-color;
-  text-shadow: 0 1px 0 $dark-color;
 }
 
 .card__img {
