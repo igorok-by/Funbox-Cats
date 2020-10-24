@@ -41,19 +41,22 @@ const App = () => {
     if (updatedCard.isClicked) updateCardState(cardId)
   }
 
-  const mappedCards = cardsData.map((card) =>
-    card.cardState === DISABLED ? (
+  const mappedCards = cardsData.map((card) => {
+    const onCardClick =
+      window.innerWidth <= 800 ? updateCardState : handleCardClick
+
+    return card.cardState === DISABLED ? (
       <Card data={card} key={card.id} />
     ) : (
       <Card
         data={card}
         key={card.id}
         handleCaptionClick={() => updateCardState(card.id)}
-        handleCardClick={() => handleCardClick(card.id)}
+        handleCardClick={() => onCardClick(card.id)}
         handleCardMouseOut={() => handleCardMouseOut(card.id)}
       />
-    ),
-  )
+    )
+  })
 
   return (
     <div className="app">
