@@ -1,6 +1,10 @@
-# Servicehub
+# Funbox Cats
 
-This is test task implemented in ```React.js``` (task conditions [here]())
+This is test task implemented in ```React.js``` (task conditions [here](https://github.com/igorok-by/Funbox-Cats/blob/master/docs/qt-html-css-js.pdf))
+
+## Deployed result
+
+[Funbox Cats](https://igorok-by-funbox-cats.netlify.app/)
 
 ## Getting Started
 
